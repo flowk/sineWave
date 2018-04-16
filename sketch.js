@@ -1,16 +1,16 @@
+let cnv;
 var counter = 0;
 
 function setup() {
   // put setup code here
-    createCanvas(windowWidth, windowHeight, WEBGL);
+    cnv = createCanvas(windowWidth, windowHeight, WEBGL);
+    cnv.parent('p5Sketch');
     //createCanvas(600,600, WEBGL);
-    //stroke(0);     // Set line drawing color to white
     frameRate(30);
 }
 
 function draw() {
   // put drawing code here
-
   background(0);
 
 }
