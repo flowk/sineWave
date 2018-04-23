@@ -10,7 +10,7 @@ let waveFreq = 0;
 let period = 3;
 let loop = 30;
 let offset = 0;
-
+let drawLines = true;
 
 function setup() {
   // put setup code here
@@ -45,6 +45,8 @@ function draw() {
 		polygon(vertices, radius * i/2,	i * offset, width/2, y);
 	}
 	wave += inc;
+	document.getElementById("linesButton").onclick = lineButton;
+
 }
 
 function windowResized() {
@@ -52,7 +54,14 @@ function windowResized() {
 }
 
 function polygon(vert, r, offset, posX, posY){
-	beginShape(POINTS); // 	beginShape(QUADS); // beginShape();
+
+	 // 	beginShape(QUADS); // beginShape(LINES);
+	if (drawLines) { // change things depending on true/false 
+    beginShape(); 
+	} else{
+		beginShape(POINTS);
+	}
+	
 	for(let i=0; i< vert; i++){
 		let angle = map(i, 0, vert, 0 + offset, TWO_PI + offset);
 		let x = cos(angle) * r + posX;
@@ -62,7 +71,17 @@ function polygon(vert, r, offset, posX, posY){
 	endShape(CLOSE);
 }
 
-// COlour WHeel wie mach ich das?
+function lineButton(){
+	//linesButton
+
+	if (drawLines) { // checks if it's already on 
+	drawLines = false; // if on, turn off 
+} else { 
+	drawLines = true; // else, turn on 
+} 
+}
+
+// Colour WHeel wie mach ich das?
 /*
 function colorwheel(WheelPos) {
   WheelPos = 255 - WheelPos;
